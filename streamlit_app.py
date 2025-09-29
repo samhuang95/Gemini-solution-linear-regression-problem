@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-plt.rcParams['font.sans-serif'] = ['Microsoft YaHei'] # For Windows
-plt.rcParams['axes.unicode_minus'] = False # To display minus sign correctly
-
 st.title("線性迴歸模擬器")
 
 st.sidebar.header("參數設定")
@@ -54,18 +51,18 @@ st.write(f"檢測到的離群值數量: {len(outlier_indices)}")
 # 6. 部署 (Deployment) - 使用 matplotlib 畫圖，展示結果
 st.subheader("線性迴歸結果視覺化")
 fig, ax = plt.subplots()
-ax.scatter(X, y, color="blue", label="實際值", alpha=0.6)
-ax.plot(X, y_pred, color="red", linewidth=2, label="預測迴歸線")
+ax.scatter(X, y, color="blue", label="Actual Values", alpha=0.6)
+ax.plot(X, y_pred, color="red", linewidth=2, label="Regression Line")
 
 # 標註離群值
 if len(outlier_indices) > 0:
-    ax.scatter(X[outlier_indices], y[outlier_indices], color="green", marker="o", s=100, label="離群值")
+    ax.scatter(X[outlier_indices], y[outlier_indices], color="green", marker="o", s=100, label="Outliers")
     for i in outlier_indices:
         ax.annotate(f'({X[i,0]:.1f}, {y[i,0]:.1f})', (X[i,0], y[i,0]), textcoords="offset points", xytext=(0,10), ha='center', fontsize=8, color='green')
 
-ax.set_xlabel("學習時數")
-ax.set_ylabel("考試分數")
-ax.set_title("線性迴歸：學習時數 vs 考試分數")
+ax.set_xlabel("Study Hours")
+ax.set_ylabel("Exam Score")
+ax.set_title("Linear Regression: Study Hours vs Exam Score")
 ax.legend()
 ax.grid(True)
 st.pyplot(fig)

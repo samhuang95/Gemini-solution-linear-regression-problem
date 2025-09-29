@@ -12,3 +12,6 @@
 [12] [2025-09-29 10:50:00] - Re-attempted to run `streamlit_app.py` in the background after implementing the display of top 5 outliers table, instructing the user to check `http://localhost:8501`.
 [13] [2025-09-29 10:55:00] - Reordered sections in `streamlit_app.py` to place the 'Top 5 離群值' table after the '線性迴歸結果視覺化' plot.
 [14] [2025-09-29 11:00:00] - Created `README.md` with a detailed project report, including overview, features, technical details, setup instructions, file structure, and a reference to the change log.
+[15] [2025-09-29 11:05:00] - Added demo site URL `https://gemini-solution-linear-regression-problem.streamlit.app/` to `README.md` after the '專案概覽' section.
+[16] [2025-09-29 11:10:00] - Modified `streamlit_app.py` to remove `matplotlib` font configuration and change all plot labels and title to English.
+[17] [2025-09-29 11:15:00] - Re-attempted to run `streamlit_app.py` in the background after changing plot text to English, instructing the user to check `http://localhost:8501`.

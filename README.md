@@ -4,6 +4,12 @@
 
 這個專案是一個基於 Streamlit 的互動式應用程式，用於模擬和視覺化線性迴歸。使用者可以調整資料生成的參數，包括資料點數量、線性關係的斜率以及雜訊的變異數。應用程式會根據這些參數生成模擬資料，訓練線性迴歸模型，評估模型性能，並以圖表形式展示結果，同時標註離群值並列出 Top 5 離群值。
 
+### 演示網站
+
+您可以透過以下連結體驗此 Streamlit 應用程式的線上演示：
+[https://gemini-solution-linear-regression-problem.streamlit.app/](https://gemini-solution-linear-regression-problem.streamlit.app/)
+
+
 ## 主要功能
 
 *   **線性迴歸模擬：** 根據使用者定義的參數生成模擬資料並執行線性迴歸。
