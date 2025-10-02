@@ -15,3 +15,6 @@
 [15] [2025-09-29 11:05:00] - Added demo site URL `https://gemini-solution-linear-regression-problem.streamlit.app/` to `README.md` after the '專案概覽' section.
 [16] [2025-09-29 11:10:00] - Modified `streamlit_app.py` to remove `matplotlib` font configuration and change all plot labels and title to English.
 [17] [2025-09-29 11:15:00] - Re-attempted to run `streamlit_app.py` in the background after changing plot text to English, instructing the user to check `http://localhost:8501`.
+[18] [2025-10-02 14:30:00] - Integrated a keep-alive mechanism to prevent the Streamlit app from sleeping. Modified streamlit_app.py to add a background thread that pings the application URL every 10 minutes. Updated requirements.txt to include new dependencies: requests and streamlit-javascript.
+[19] [2025-10-02 15:00:00] - Added a project-specific rule to GEMINI.md to ensure all future changes are logged in log.md, making the requirement project-wide.
+[20] [2025-10-02 15:05:00] - Removed the user-specific preference for logging to avoid redundancy, following the creation of the project-specific rule in GEMINI.md.

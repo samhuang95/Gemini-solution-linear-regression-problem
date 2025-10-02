@@ -1,4 +1,77 @@
 import streamlit as st
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from threading import Thread
+import time
+import requests
+from streamlit_javascript import st_javascript
+
+def keep_alive(url):
+    """Pings the URL every 10 minutes to keep the app awake."""
+    while True:
+        try:
+            requests.get(url)
+            print("Keep-alive ping successful.")
+        except Exception as e:
+            print(f"Keep-alive ping failed: {e}")
+        time.sleep(600)  # Sleep for 10 minutes
+
+# Get the app's URL from the browser. This needs to be executed only once.
+app_url = st_javascript("await fetch(window.location.href).then(response => response.text())")
+
+# Start the keep-alive thread only once
+if 'keep_alive_thread_started' not in st.session_state:
+    if app_url:
+        thread = Thread(target=keep_alive, args=(app_url,))
+        thread.daemon = True  # Ensure thread exits when the main app exits
+        thread.start()
+        st.session_state.keep_alive_thread_started = True
+        print("Keep-alive thread started.")
+
+# --- Your existing app code below ---
+
+# Page title
+st.set_page_config(page_title='ML - Linear Regression')
+st.title('ML - Linear Regression')
+
+# File upload
+uploaded_file = st.file_uploader('Upload a CSV file', type='csv')
+
+if uploaded_file:
+    df = pd.read_csv(uploaded_file)
+    st.write('**Data Preview**')
+    st.write(df.head())
+
+    st.write('**Select X and Y variables**')
+    options = df.columns.tolist()
+    x_vars = st.multiselect('Select X variable(s)', options)
+    y_var = st.selectbox('Select Y variable', options)
+
+    if x_vars and y_var:
+        X = df[x_vars]
+        y = df[y_var]
+
+        # Model training
+        model = LinearRegression()
+        model.fit(X, y)
+
+        st.write('**Model Coefficients**')
+        st.write(pd.DataFrame(model.coef_, X.columns, columns=['Coefficient']))
+
+        st.write('**Model Intercept**')
+        st.write(model.intercept_)
+
+        # Prediction
+        st.write('**Make Predictions**')
+        input_data = {}
+        for var in x_vars:
+            input_data[var] = st.number_input(f'Enter value for {var}', value=float(X[var].mean()))
+
+        if st.button('Predict'):
+            input_df = pd.DataFrame([input_data])
+            prediction = model.predict(input_df)
+            st.write(f'**Prediction:** {prediction[0]}')
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression

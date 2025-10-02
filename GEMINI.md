@@ -14,3 +14,7 @@ This directory serves as the workspace for the Gemini AI agent. It is used to st
 This directory is primarily managed by the Gemini AI agent. Users interact with the agent, and the agent utilizes this workspace to maintain context, record actions, and store necessary information for its operations.
 
 All log entries in `log.md` will include a sequence number and a timestamp in the format: `[Sequence] [YYYY-MM-DD HH:MM:SS] - Log Message`.
+
+## Project-Specific Rules
+
+- All file modifications, additions, or deletions must be logged as a new entry in `log.md`.
